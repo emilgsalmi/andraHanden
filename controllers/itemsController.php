@@ -49,7 +49,6 @@ class ItemController {
 
     public function updateItem($itemId, $data) {
         $item = $this->model->updateItem($itemId, $data);
-
         return $item;
     }
     

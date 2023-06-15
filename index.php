@@ -54,11 +54,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 if ($_SERVER['REQUEST_METHOD'] === 'PUT') {
-    if ($endpoint === '/items/') {
-        $itemcontroller->updateItem();
+    if (strpos($endpoint, '/items/') === 0) {
+        $itemId = substr($endpoint, strlen('/items/'));
+
+        $data = json_decode(file_get_contents('php://input'), true);
+
+        $item = $itemcontroller->updateItem($itemId, $data);
+
+        if ($item) {
+            $itemview->renderJson($item);
+        } else {
+            $itemview->renderError('Failed to update item.');
+        }
     }
 }
-
 
 
 

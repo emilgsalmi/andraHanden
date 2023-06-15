@@ -8,5 +8,9 @@ class itemsView {
             header('HTTP/1.0 404 not found');
             echo "item not found";
         }
+        public function renderError($errorMessage) {
+            header('HTTP/1.0 500 Internal Server Error');
+            echo $errorMessage;
+        }
     }
 ?>
