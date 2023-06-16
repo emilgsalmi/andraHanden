@@ -48,8 +48,6 @@ class Item
             $stmt->bindParam(':itemId', $itemId, PDO::PARAM_INT);
             $stmt->execute();
         
-            // Perform additional update statements or business logic if needed
-        
             // Update the sellers table
             $stmt2 = $this->conn->prepare("UPDATE sellers SET 
                 total_sale_amount = (SELECT SUM(i.sale_amount) FROM items i WHERE i.seller_id = sellers.seller_id AND i.sold = 1),
@@ -67,8 +65,5 @@ class Item
             }
         }
         
-        
-
-
     }
 ?>

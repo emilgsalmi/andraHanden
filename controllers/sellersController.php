@@ -1,6 +1,6 @@
 <?php
 
-require_once "models/seller.php";
+require_once "models/sellerModel.php";
 require_once "view/sellerView.php";
 
 class sellerController {

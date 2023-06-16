@@ -1,5 +1,5 @@
 <?php
-require_once "models/item.php";
+require_once "models/itemModel.php";
 require_once "view/itemView.php";
 
 class ItemController {
@@ -32,13 +32,8 @@ class ItemController {
 
     public function createItem() {
         $data = json_decode(file_get_contents('php://input'), true);
-    
-        // Validate the input data
-        // ...
-    
-        // Create a new item
         $item = $this->model->createItem($data);
-    
+
         // Return a response
         if ($item) {
             $this->view->renderJson($item);
